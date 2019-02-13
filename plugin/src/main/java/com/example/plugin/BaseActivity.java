@@ -1,6 +1,8 @@
 package com.example.plugin;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,14 @@ public class BaseActivity extends Activity implements PluginLifeCycleCallback {
 
     private Activity activity;
 
+    @Override
+    public PackageManager getPackageManager() {
+        if (activity == null) {
+            return super.getPackageManager();
+        } else {
+            return activity.getPackageManager();
+        }
+    }
 
     @Override
     public void setContentView(int layoutResID) {
@@ -60,43 +70,41 @@ public class BaseActivity extends Activity implements PluginLifeCycleCallback {
     @Override
     public LayoutInflater getLayoutInflater() {
         if (activity == null) {
-
             return super.getLayoutInflater();
         } else {
             return activity.getLayoutInflater();
         }
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onStart() {
-        super.onStart();
 
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onResume() {
-        super.onResume();
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onPause() {
-        super.onPause();
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onStop() {
-        super.onStop();
-
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onDestroy() {
-        super.onDestroy();
 
     }
 
